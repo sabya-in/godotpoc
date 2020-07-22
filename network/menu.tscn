@@ -1,0 +1,132 @@
+[gd_scene load_steps=7 format=2]
+
+[ext_resource path="res://network/menu.gd" type="Script" id=1]
+[ext_resource path="res://network/menu_button.tres" type="StyleBox" id=2]
+[ext_resource path="res://network/menu_font.tres" type="DynamicFont" id=3]
+[ext_resource path="res://assets/sky.jpg" type="Texture" id=4]
+
+[sub_resource type="StyleBoxFlat" id=1]
+border_width_left = 3
+border_width_top = 3
+border_width_right = 3
+border_width_bottom = 3
+corner_radius_top_left = 4
+corner_radius_top_right = 4
+corner_radius_bottom_left = 4
+
+[sub_resource type="StyleBoxFlat" id=2]
+border_width_left = 3
+border_width_top = 3
+border_width_right = 3
+border_width_bottom = 3
+corner_radius_top_left = 4
+corner_radius_top_right = 4
+corner_radius_bottom_right = 4
+corner_radius_bottom_left = 4
+
+[node name="Menu" type="Control"]
+margin_right = 1022.0
+margin_bottom = 597.0
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="TextureRect" type="TextureRect" parent="."]
+margin_left = -126.621
+margin_top = -35.0643
+margin_right = 1239.38
+margin_bottom = 732.936
+texture = ExtResource( 4 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="cannonballs" type="Label" parent="."]
+margin_left = 336.425
+margin_top = 55.9524
+margin_right = 697.425
+margin_bottom = 109.952
+text = "Cannonballs"
+align = 1
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Panel" type="Panel" parent="."]
+margin_left = 256.0
+margin_top = 199.0
+margin_right = 779.0
+margin_bottom = 458.0
+custom_styles/panel = ExtResource( 2 )
+script = ExtResource( 1 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="lobby" type="Label" parent="Panel"]
+margin_left = 166.0
+margin_top = 26.1122
+margin_right = 372.0
+margin_bottom = 50.1122
+text = "Connection Information"
+align = 1
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="hostname" type="LineEdit" parent="Panel"]
+margin_left = 166.0
+margin_top = 70.3844
+margin_right = 371.0
+margin_bottom = 100.384
+text = "127.0.0.1"
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="name" type="LineEdit" parent="Panel"]
+margin_left = 167.432
+margin_top = 120.503
+margin_right = 372.432
+margin_bottom = 150.503
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="status" type="Label" parent="Panel"]
+margin_left = 82.0
+margin_top = 215.0
+margin_right = 484.0
+margin_bottom = 249.0
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="join" type="Button" parent="Panel"]
+margin_left = 125.143
+margin_top = 170.568
+margin_right = 249.143
+margin_bottom = 204.568
+custom_styles/hover = SubResource( 1 )
+custom_styles/normal = ExtResource( 2 )
+custom_fonts/font = ExtResource( 3 )
+text = "Join"
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="create" type="Button" parent="Panel"]
+margin_left = 282.0
+margin_top = 171.0
+margin_right = 424.0
+margin_bottom = 205.0
+custom_styles/hover = SubResource( 2 )
+custom_styles/normal = ExtResource( 2 )
+custom_fonts/font = ExtResource( 3 )
+text = "create"
+__meta__ = {
+"_edit_use_anchors_": false
+}
+[connection signal="text_changed" from="Panel/name" to="Panel" method="_on_name_text_changed"]
+[connection signal="pressed" from="Panel/join" to="Panel" method="_on_join_pressed"]
+[connection signal="pressed" from="Panel/create" to="Panel" method="_on_create_pressed"]

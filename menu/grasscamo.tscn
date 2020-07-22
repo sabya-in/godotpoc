@@ -1,0 +1,29 @@
+[gd_scene load_steps=5 format=2]
+
+[ext_resource path="res://menu/grasscamo.png" type="Texture" id=1]
+[ext_resource path="res://menu/grasscamo.gd" type="Script" id=2]
+
+[sub_resource type="PhysicsMaterial" id=1]
+absorbent = true
+
+[sub_resource type="SpriteFrames" id=2]
+animations = [ {
+"frames": [ ExtResource( 1 ) ],
+"loop": true,
+"name": "default",
+"speed": 5.0
+} ]
+
+[node name="grasscamo" type="RigidBody2D"]
+collision_layer = 8
+mass = 10000.0
+physics_material_override = SubResource( 1 )
+can_sleep = false
+script = ExtResource( 2 )
+
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="."]
+polygon = PoolVector2Array( -22.7431, -1.32973, 0.256897, -9.32973, 24.2569, -0.829727 )
+
+[node name="AnimatedSprite" type="AnimatedSprite" parent="."]
+position = Vector2( 4, -73.5 )
+frames = SubResource( 2 )

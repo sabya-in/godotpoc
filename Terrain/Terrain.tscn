@@ -1,0 +1,151 @@
+[gd_scene load_steps=5 format=2]
+
+[ext_resource path="res://Terrain/Terrain.gd" type="Script" id=1]
+[ext_resource path="res://assets/light.png" type="Texture" id=2]
+[ext_resource path="res://assets/sky.jpg" type="Texture" id=3]
+
+[sub_resource type="PhysicsMaterial" id=1]
+absorbent = true
+
+[node name="Terrain" type="Node"]
+script = ExtResource( 1 )
+
+[node name="Line2D" type="Line2D" parent="."]
+texture_mode = -545965426
+
+[node name="StaticBody2D" type="StaticBody2D" parent="."]
+collision_mask = 7
+physics_material_override = SubResource( 1 )
+
+[node name="Panel" type="Panel" parent="."]
+visible = false
+margin_left = 11.0
+margin_top = 11.0
+margin_right = 249.0
+margin_bottom = 195.0
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="score_board" type="HBoxContainer" parent="Panel"]
+margin_left = 20.0
+margin_top = 26.0
+margin_right = 180.0
+margin_bottom = 126.0
+alignment = 1
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="player_scores" type="VBoxContainer" parent="Panel/score_board"]
+margin_left = 46.0
+margin_right = 54.0
+margin_bottom = 100.0
+alignment = 1
+
+[node name="score1" type="Label" parent="Panel/score_board/player_scores"]
+margin_top = 16.0
+margin_right = 8.0
+margin_bottom = 30.0
+text = "0"
+
+[node name="score2" type="Label" parent="Panel/score_board/player_scores"]
+margin_top = 34.0
+margin_right = 8.0
+margin_bottom = 48.0
+text = "0"
+
+[node name="score3" type="Label" parent="Panel/score_board/player_scores"]
+margin_top = 52.0
+margin_right = 8.0
+margin_bottom = 66.0
+text = "0"
+
+[node name="score4" type="Label" parent="Panel/score_board/player_scores"]
+margin_top = 70.0
+margin_right = 8.0
+margin_bottom = 84.0
+text = "0"
+
+[node name="player_names" type="VBoxContainer" parent="Panel/score_board"]
+margin_left = 58.0
+margin_right = 114.0
+margin_bottom = 100.0
+alignment = 1
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Ace" type="Label" parent="Panel/score_board/player_names"]
+margin_top = 16.0
+margin_right = 56.0
+margin_bottom = 30.0
+text = "Winner"
+
+[node name="Hunter" type="Label" parent="Panel/score_board/player_names"]
+margin_top = 34.0
+margin_right = 56.0
+margin_bottom = 48.0
+text = "Hunter"
+
+[node name="Fallen" type="Label" parent="Panel/score_board/player_names"]
+margin_top = 52.0
+margin_right = 56.0
+margin_bottom = 66.0
+text = "Fallen"
+
+[node name="Deserter" type="Label" parent="Panel/score_board/player_names"]
+margin_top = 70.0
+margin_right = 56.0
+margin_bottom = 84.0
+text = "Deserter"
+
+[node name="CanvasModulate" type="CanvasModulate" parent="."]
+
+[node name="Light2D1" type="Light2D" parent="."]
+position = Vector2( 1797.14, 148.792 )
+scale = Vector2( 5.4631, 1.43669 )
+texture = ExtResource( 2 )
+color = Color( 0.960784, 0.819608, 0.819608, 1 )
+energy = 1.2
+range_item_cull_mask = 3
+
+[node name="CanvasLayer" type="CanvasLayer" parent="."]
+layer = -1
+
+[node name="TextureRect" type="TextureRect" parent="CanvasLayer"]
+show_behind_parent = true
+margin_left = -110.0
+margin_top = -90.0
+margin_right = 1215.0
+margin_bottom = 637.0
+texture = ExtResource( 3 )
+expand = true
+stretch_mode = 5
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="TextureRect2" type="TextureRect" parent="CanvasLayer"]
+margin_left = 1168.0
+margin_top = -91.0
+margin_right = 2472.0
+margin_bottom = 637.0
+texture = ExtResource( 3 )
+expand = true
+stretch_mode = 5
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="TextureRect3" type="TextureRect" parent="CanvasLayer"]
+margin_left = 2444.0
+margin_top = -90.0
+margin_right = 3738.0
+margin_bottom = 637.0
+texture = ExtResource( 3 )
+expand = true
+stretch_mode = 5
+__meta__ = {
+"_edit_use_anchors_": false
+}

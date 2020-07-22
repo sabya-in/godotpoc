@@ -1,0 +1,206 @@
+[gd_scene load_steps=16 format=2]
+
+[ext_resource path="res://assets/mrl/launcher0.png" type="Texture" id=1]
+[ext_resource path="res://assets/mrl/truck.png" type="Texture" id=2]
+[ext_resource path="res://MRL/Runner.gd" type="Script" id=3]
+[ext_resource path="res://MRL/button.tres" type="StyleBox" id=4]
+[ext_resource path="res://menu/flare.png" type="Texture" id=5]
+[ext_resource path="res://assets/gui/lifebar_fill.png" type="Texture" id=6]
+[ext_resource path="res://assets/gui/lifebar_bg.png" type="Texture" id=7]
+[ext_resource path="res://menu/grass_icon.png" type="Texture" id=8]
+[ext_resource path="res://menu/repair_icon.png" type="Texture" id=9]
+[ext_resource path="res://menu/weapon_image.png" type="Texture" id=10]
+
+[sub_resource type="PhysicsMaterial" id=1]
+rough = true
+bounce = 0.4
+absorbent = true
+
+[sub_resource type="SpriteFrames" id=2]
+animations = [ {
+"frames": [ ExtResource( 2 ) ],
+"loop": true,
+"name": "truck",
+"speed": 5.0
+} ]
+
+[sub_resource type="SpriteFrames" id=3]
+animations = [ {
+"frames": [ ExtResource( 1 ) ],
+"loop": true,
+"name": "launcher",
+"speed": 5.0
+} ]
+
+[sub_resource type="OccluderPolygon2D" id=4]
+polygon = PoolVector2Array( -107.441, -18.4214, 102.201, -21.0574, 102.67, 16.596, 13.3452, 22.1696, -26.568, 18.1781, -93.4755, 17.5502, -105.353, 4.28622 )
+
+[sub_resource type="OccluderPolygon2D" id=5]
+polygon = PoolVector2Array( 73.777, 6.8316, 57.777, -16.6684, 18.277, -16.6684, 18.277, 2.8316, -1.72301, 1.3316, -5.22301, -6.1684, -21.223, -8.1684, -21.223, 0.331596, -29.723, 0.331596, -32.223, -9.6684, -61.723, -9.6684, -73.223, -3.6684, -62.223, -0.168404, -62.223, 14.8316, -49.723, 30.8316, -37.223, 21.3316, -21.723, 30.8316, -12.223, 20.8316, 30.277, 21.3316, 45.777, 30.3316 )
+
+[node name="Runner" type="RigidBody2D" groups=[
+"player",
+]]
+collision_layer = 2
+collision_mask = 5
+mass = 4000.0
+physics_material_override = SubResource( 1 )
+contacts_reported = 6
+contact_monitor = true
+script = ExtResource( 3 )
+
+[node name="collidertruck" type="CollisionPolygon2D" parent="."]
+polygon = PoolVector2Array( 74.6819, 6.31976, 50.7667, 30.5303, 41.9092, 30.8255, 30.3944, 20.4918, -8.57854, 20.4918, -19.5028, 30.8255, -28.6555, 31.1208, -37.2178, 21.968, -46.0753, 30.8255, -53.1613, 30.8255, -67.9238, 18.7203, -67.6285, 0.119514, -75.0098, -1.35674, -74.7145, -5.78548, -32.4938, -9.62373, -4.14979, -7.55698, -3.55929, 0.414764, 16.2225, 1.89101, 15.632, -14.0525, 17.4034, -20.2527, 30.0992, -21.1385, 30.9849, -24.9767, 22.4227, -27.634, 42.4997, -27.0435, 35.7089, -17.005, 58.7384, -17.3002 )
+
+[node name="Truck" type="AnimatedSprite" parent="."]
+position = Vector2( -0.365442, -0.191715 )
+scale = Vector2( 0.5, 0.5 )
+frames = SubResource( 2 )
+animation = "truck"
+
+[node name="Camera2D" type="Camera2D" parent="."]
+current = true
+limit_left = 0
+limit_bottom = 600
+drag_margin_h_enabled = true
+drag_margin_v_enabled = true
+
+[node name="Control" type="Control" parent="."]
+margin_left = -10.0
+margin_top = 11.0
+margin_right = 29.0
+margin_bottom = 14.0
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="healthbar" type="TextureProgress" parent="Control"]
+margin_right = 396.0
+margin_bottom = 53.0
+rect_scale = Vector2( 0.1, 0.1 )
+value = 100.0
+texture_under = ExtResource( 7 )
+texture_progress = ExtResource( 6 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="score" type="Label" parent="Control"]
+margin_top = 6.0
+margin_right = 39.0
+margin_bottom = 20.0
+align = 1
+valign = 1
+__meta__ = {
+"_edit_use_anchors_": false,
+"_editor_description_": ""
+}
+
+[node name="name" type="RichTextLabel" parent="."]
+margin_left = -37.7537
+margin_top = -63.5791
+margin_right = 38.2463
+margin_bottom = -44.5791
+visible_characters = 12
+text = "sachi95"
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="colliderlauncher" type="CollisionPolygon2D" parent="."]
+show_behind_parent = true
+position = Vector2( -37.2733, -23.5047 )
+rotation = -0.174533
+scale = Vector2( 0.5, 0.5 )
+polygon = PoolVector2Array( -96.7552, 15.4234, -102.785, 5.62568, -110.321, 5.62568, -110.321, -20.7527, 105.228, -23.7674, 107.489, -3.41834, 105.982, 16.9307, 99.9522, 18.438, 99.9522, 25.2211, 14.0341, 27.4821, 0.468025, 28.9894, -39.4764, 19.1917 )
+
+[node name="Launcher" type="AnimatedSprite" parent="."]
+show_behind_parent = true
+position = Vector2( -34.7191, -25.3699 )
+rotation = -0.174533
+scale = Vector2( 0.5, 0.5 )
+frames = SubResource( 3 )
+animation = "launcher"
+
+[node name="blastpoint" type="Node2D" parent="Launcher"]
+position = Vector2( 180.433, -5.84113 )
+
+[node name="LightOccluder2D" type="LightOccluder2D" parent="Launcher"]
+occluder = SubResource( 4 )
+
+[node name="camo" type="Button" parent="."]
+margin_left = -59.5
+margin_top = 48.5
+margin_right = -34.5
+margin_bottom = 72.5
+rect_pivot_offset = Vector2( 12.5, 59.5 )
+focus_mode = 1
+custom_styles/hover = ExtResource( 4 )
+custom_styles/normal = ExtResource( 4 )
+enabled_focus_mode = 1
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Sprite" type="Sprite" parent="camo"]
+position = Vector2( 12, 11.5 )
+scale = Vector2( 0.1, 0.1 )
+texture = ExtResource( 8 )
+
+[node name="flare" type="Button" parent="."]
+margin_left = 5.5
+margin_top = 36.5
+margin_right = 30.5
+margin_bottom = 60.5
+rect_pivot_offset = Vector2( 12.5, 59.5 )
+custom_styles/hover = ExtResource( 4 )
+custom_styles/normal = ExtResource( 4 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Sprite" type="Sprite" parent="flare"]
+position = Vector2( 12, 12 )
+scale = Vector2( 0.1, 0.1 )
+texture = ExtResource( 5 )
+
+[node name="repair" type="Button" parent="."]
+margin_left = -30.0
+margin_top = 37.0
+margin_right = -5.0
+margin_bottom = 61.0
+rect_pivot_offset = Vector2( 12.5, 59.5 )
+custom_styles/hover = ExtResource( 4 )
+custom_styles/normal = ExtResource( 4 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Sprite" type="Sprite" parent="repair"]
+position = Vector2( 12.5, 12 )
+scale = Vector2( 0.04, 0.04 )
+texture = ExtResource( 9 )
+
+[node name="weapon" type="Button" parent="."]
+margin_left = 39.0
+margin_top = 48.0
+margin_right = 64.0
+margin_bottom = 72.0
+rect_pivot_offset = Vector2( 12.5, 59.5 )
+custom_styles/hover = ExtResource( 4 )
+custom_styles/normal = ExtResource( 4 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Sprite" type="Sprite" parent="weapon"]
+position = Vector2( 12, 12 )
+rotation = 1.91986
+scale = Vector2( 0.1, 0.2 )
+texture = ExtResource( 10 )
+
+[node name="LightOccluder2D" type="LightOccluder2D" parent="."]
+occluder = SubResource( 5 )
+[connection signal="button_down" from="camo" to="." method="_on_camo_button_down"]
+[connection signal="button_down" from="flare" to="." method="_on_flare_button_down"]
+[connection signal="button_down" from="repair" to="." method="_on_repair_button_down"]
